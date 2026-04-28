@@ -5,6 +5,7 @@ import {
   BookOpen, Cpu, Lightbulb, Library, MonitorPlay, Briefcase, Globe,
   Target, Wrench, MapPin, Phone, Mail, ArrowUp
 } from 'lucide-react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import logo from './assets/science saga logo no-bg.png';
 import gallery1 from './assets/sceince saga class room 1.webp';
 import gallery2 from './assets/sceince saga class room 2.webp';
@@ -786,6 +787,7 @@ function App() {
           <ArrowUp className="w-5 h-5" />
         </button>
       </div>
+      <SpeedInsights />
     </div>
   );
 }
