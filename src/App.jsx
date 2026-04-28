@@ -5,6 +5,10 @@ import {
   BookOpen, Cpu, Lightbulb, Library, MonitorPlay, Briefcase, Globe,
   Target, Wrench, MapPin, Phone, Mail, ArrowUp
 } from 'lucide-react';
+import logo from './assets/science saga logo no-bg.png';
+import gallery1 from './assets/sceince saga class room 1.webp';
+import gallery2 from './assets/sceince saga class room 2.webp';
+import gallery3 from './assets/sceince saga robotic room.webp';
 
 function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -34,8 +38,8 @@ function App() {
           <div className="flex items-center h-20">
             {/* Logo on the far left */}
             <div className="flex items-center gap-3 w-full md:w-1/4">
-              <div className="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center border border-teal-100">
-                <Cpu className="w-6 h-6 text-teal-700" />
+              <div className="w-14 h-14 flex items-center justify-center">
+                <img src={logo} alt="Science Saga Logo" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold text-teal-800 leading-tight">Science Saga</span>
@@ -627,8 +631,38 @@ function App() {
         </div>
       </section>
 
-      {/* Contact Us & Support */}
+      {/* Photo Gallery */}
       <section className="py-24 bg-[#FAFAFA]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-cyan-100 text-cyan-800 font-semibold text-xs uppercase tracking-wider mb-6">
+              Gallery
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">A Glimpse into Our Classrooms</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Our state-of-the-art facilities designed specifically to bring hands-on AI and Robotics learning to rural communities.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group relative">
+              <img src={gallery1} alt="Classroom 1" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group relative">
+              <img src={gallery2} alt="Classroom 2" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group relative">
+              <img src={gallery3} alt="Robotic Room" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Us & Support */}
+      <section className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-block px-4 py-1.5 rounded-full bg-cyan-100 text-cyan-800 font-semibold text-xs uppercase tracking-wider mb-6">
@@ -714,8 +748,8 @@ function App() {
       <footer className="bg-[#0B1120] py-8 border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-teal-900/50 flex items-center justify-center border border-teal-800">
-              <Cpu className="w-4 h-4 text-teal-500" />
+            <div className="w-10 h-10 flex items-center justify-center bg-white/10 rounded p-1">
+              <img src={logo} alt="Science Saga Logo" className="w-full h-full object-contain" />
             </div>
             <div className="flex flex-col">
               <span className="text-sm font-bold text-white leading-tight">Science Saga</span>
