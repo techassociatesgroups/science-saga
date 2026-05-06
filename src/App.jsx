@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import ApplyPage from './ApplyPage';
-import { 
-  Award, ShieldCheck, Heart, Users, 
+import {
+  Award, ShieldCheck, Heart, Users,
   GraduationCap, Utensils, CloudRain, Scissors, TreePine,
   BookOpen, Cpu, Lightbulb, Library, MonitorPlay, Briefcase, Globe,
   Target, Wrench, MapPin, Phone, Mail, ArrowUp, Menu, X
@@ -22,13 +22,13 @@ function LandingPage() {
     const name = e.target.name.value;
     const subject = e.target.subject.value;
     const message = e.target.message.value;
-    
+
     const mailtoLink = `mailto:techassociatesgroups@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\n\nMessage:\n${message}`)}`;
     window.location.href = mailtoLink;
-    
+
     setShowSuccessPopup(true);
     e.target.reset();
-    
+
     setTimeout(() => {
       setShowSuccessPopup(false);
     }, 5000);
@@ -68,7 +68,7 @@ function LandingPage() {
                   <span className="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-wider font-medium">by Arul Educational Trust</span>
                 </div>
               </div>
-              <button 
+              <button
                 className="md:hidden p-2 text-gray-600 hover:text-teal-700"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label="Toggle mobile menu"
@@ -76,7 +76,7 @@ function LandingPage() {
                 {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
-            
+
             {/* Desktop Nav links centered */}
             <div className="hidden md:flex items-center justify-center space-x-8 flex-1">
               <a href="#home" className="text-gray-600 hover:text-science-orange text-sm font-medium transition-colors">Home</a>
@@ -120,15 +120,19 @@ function LandingPage() {
         )}
       </nav>
 
-      {/* Hero Section */}
-      <section id="home" className="relative min-h-[100svh] flex flex-col items-center justify-center pt-28 pb-12">
-        <img 
-          src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2832&auto=format&fit=crop" 
-          alt="Hero Background" 
-          className="absolute inset-0 w-full h-full object-cover z-0" 
-        />
-        <div className="absolute inset-0 bg-black/40 bg-gradient-to-b from-black/20 to-black/60 z-0"></div>
-        
+     {/* Hero Section */}
+<section
+  id="home"
+  className="relative min-h-[100svh] flex flex-col items-center justify-center pt-28 pb-12"
+>
+  <img
+    src={gallery2}
+    alt="Hero Background"
+    className="absolute inset-0 w-full h-full object-cover z-0"
+  />
+
+  <div className="absolute inset-0 bg-black/40 bg-gradient-to-b from-black/20 to-black/60 z-0"></div>
+
         {/* Content centered */}
         <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto w-full mt-8 md:mt-12 mb-8">
           <div className="inline-block px-5 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-slate-200 font-medium text-sm mb-6">
@@ -155,7 +159,7 @@ function LandingPage() {
             </a>
           </div>
         </div>
-        
+
         {/* Stats Row */}
         <div className="relative z-10 w-full border-t border-white/20 backdrop-blur-sm bg-black/20 mt-auto">
           <div className="max-w-7xl mx-auto px-4 py-8">
@@ -205,12 +209,12 @@ function LandingPage() {
             </div>
             <div className="flex-1 w-full max-w-sm mx-auto">
               <div className="relative w-full aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl border-4 border-gray-100">
-                <iframe 
+                <iframe
                   className="absolute inset-0 w-full h-full"
-                  src="https://www.youtube.com/embed/bJQ6LuP0ZZo" 
-                  title="What is Science Saga?" 
-                  frameBorder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  src="https://www.youtube.com/embed/bJQ6LuP0ZZo"
+                  title="What is Science Saga?"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 ></iframe>
               </div>
@@ -298,7 +302,7 @@ function LandingPage() {
                 </p>
               </div>
             </div>
-            
+
             {/* Item 2 */}
             <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-start gap-6 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 shrink-0 bg-teal-50 rounded-xl flex items-center justify-center mt-1">
@@ -405,7 +409,7 @@ function LandingPage() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-12 text-center">Project Objectives</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-[#FAFAFA] p-8 rounded-2xl border border-gray-100">
               <div className="w-10 h-10 bg-teal-50 rounded-lg flex items-center justify-center mb-5">
@@ -414,7 +418,7 @@ function LandingPage() {
               <h3 className="text-lg font-bold text-gray-900 mb-3 leading-tight">Free, Inclusive Tech-Enabled Education</h3>
               <p className="text-sm text-gray-600 leading-relaxed">100% free robotics, electronics, and AI education breaking socio-economic and digital barriers.</p>
             </div>
-            
+
             <div className="bg-[#FAFAFA] p-8 rounded-2xl border border-gray-100">
               <div className="w-10 h-10 bg-teal-50 rounded-lg flex items-center justify-center mb-5">
                 <Cpu className="w-5 h-5 text-teal-700" />
@@ -479,7 +483,7 @@ function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-[#FAFAFA] rounded-3xl p-10 md:p-14 border border-gray-100">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-10 text-center">Implementation Plan</h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">
               {/* Col 1 */}
               <div>
@@ -635,7 +639,7 @@ function LandingPage() {
               <div className="text-xs text-gray-500 font-medium uppercase tracking-wider">Students Impacted</div>
             </div>
             <div className="bg-white py-8 px-4 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
-              <div className="text-2xl md:text-3xl font-extrabold text-teal-800 mb-2">1,000+</div>
+              <div className="text-2xl md:text-3xl font-extrabold text-teal-800 mb-2">40K+</div>
               <div className="text-xs text-gray-500 font-medium uppercase tracking-wider">Academic Support Hours</div>
             </div>
             <div className="bg-white py-8 px-4 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
@@ -646,7 +650,7 @@ function LandingPage() {
               <div className="text-2xl md:text-3xl font-extrabold text-teal-800 mb-2">250+</div>
               <div className="text-xs text-gray-500 font-medium uppercase tracking-wider">Rural Youth Trained</div>
             </div>
-            
+
             <div className="bg-white py-8 px-4 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
               <div className="text-2xl md:text-3xl font-extrabold text-teal-800 mb-2">55%+</div>
               <div className="text-xs text-gray-500 font-medium uppercase tracking-wider">Girls in Robotics</div>
@@ -823,7 +827,7 @@ function LandingPage() {
                   Send Message
                 </button>
               </form>
-              
+
               {showSuccessPopup && (
                 <div className="absolute inset-0 bg-teal-800/95 flex flex-col items-center justify-center p-8 text-center backdrop-blur-sm z-10 transition-all duration-300">
                   <div className="w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center mb-4 shadow-lg">
@@ -833,7 +837,7 @@ function LandingPage() {
                   </div>
                   <h4 className="text-xl font-bold mb-2">Message Prepared!</h4>
                   <p className="text-teal-50 text-sm">Opening your email client to send the message to techassociatesgroups@gmail.com.</p>
-                  <button 
+                  <button
                     onClick={() => setShowSuccessPopup(false)}
                     className="mt-6 px-6 py-2 border border-teal-600 rounded-lg text-sm hover:bg-teal-700 transition-colors"
                   >
@@ -867,20 +871,20 @@ function LandingPage() {
       {/* Floating Buttons */}
       <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
         {/* WhatsApp Button */}
-        <a 
-          href="https://wa.me/919894519351" 
-          target="_blank" 
+        <a
+          href="https://wa.me/919894519351"
+          target="_blank"
           rel="noopener noreferrer"
           className="w-14 h-14 bg-[#25D366] hover:bg-[#1ebd5a] text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
           aria-label="Contact us on WhatsApp"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
           </svg>
         </a>
 
         {/* Scroll to Top Button */}
-        <button 
+        <button
           onClick={scrollToTop}
           className={`w-12 h-12 bg-gray-900 hover:bg-gray-800 text-white rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 ml-1 ${showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
           aria-label="Scroll to top"

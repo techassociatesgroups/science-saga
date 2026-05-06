@@ -34,7 +34,7 @@ const ApplyPage = () => {
           <p className="text-lg text-gray-600 leading-relaxed mb-8">
             Join the Science Saga program and start your journey into AI, robotics, and future-ready technologies. Fill out the application form below to apply.
           </p>
-          
+
           <div className="bg-white p-8 md:p-12 rounded-3xl shadow-lg border border-gray-100">
             <div className="mb-8">
               <div className="inline-block px-4 py-1.5 rounded-full bg-orange-100 text-orange-800 font-semibold text-xs uppercase tracking-wider mb-4">
@@ -44,10 +44,10 @@ const ApplyPage = () => {
               <p className="text-gray-600 mb-8">
                 Please click the button below to open the application form in a new tab. Make sure to provide accurate details.
               </p>
-              
-              <a 
-                href="https://forms.gle/your-google-form-link" 
-                target="_blank" 
+
+              <a
+                href="https://forms.gle/FYipNFoT6X2B1rUy8"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 bg-teal-700 hover:bg-teal-800 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 shadow-md w-full sm:w-auto text-lg"
               >
@@ -58,12 +58,12 @@ const ApplyPage = () => {
 
             {/* Optional embedded iframe if needed later */}
             <div className="hidden mt-12 w-full aspect-[4/3] max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-inner border border-gray-200">
-              <iframe 
-                src="https://docs.google.com/forms/d/e/your-form-id/viewform?embedded=true" 
-                width="100%" 
-                height="100%" 
-                frameBorder="0" 
-                marginHeight="0" 
+              <iframe
+                src="https://docs.google.com/forms/d/e/your-form-id/viewform?embedded=true"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                marginHeight="0"
                 marginWidth="0"
                 title="Application Form"
               >
@@ -73,7 +73,7 @@ const ApplyPage = () => {
           </div>
         </div>
       </main>
-      
+
       {/* Simple Footer */}
       <footer className="w-full bg-white border-t border-gray-100 py-8">
         <div className="max-w-7xl mx-auto px-4 text-center">
