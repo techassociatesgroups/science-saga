@@ -1,17 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
+import ApplyPage from './ApplyPage';
 import { 
   Award, ShieldCheck, Heart, Users, 
   GraduationCap, Utensils, CloudRain, Scissors, TreePine,
   BookOpen, Cpu, Lightbulb, Library, MonitorPlay, Briefcase, Globe,
-  Target, Wrench, MapPin, Phone, Mail, ArrowUp
+  Target, Wrench, MapPin, Phone, Mail, ArrowUp, Menu, X
 } from 'lucide-react';
 import logo from './assets/science saga logo no-bg.png';
 import gallery1 from './assets/sceince saga class room 1.webp';
 import gallery2 from './assets/sceince saga class room 2.webp';
 import gallery3 from './assets/sceince saga robotic room.webp';
 
-function App() {
+function LandingPage() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const subject = e.target.subject.value;
+    const message = e.target.message.value;
+    
+    const mailtoLink = `mailto:techassociatesgroups@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\n\nMessage:\n${message}`)}`;
+    window.location.href = mailtoLink;
+    
+    setShowSuccessPopup(true);
+    e.target.reset();
+    
+    setTimeout(() => {
+      setShowSuccessPopup(false);
+    }, 5000);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,39 +58,70 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center h-20">
             {/* Logo on the far left */}
-            <div className="flex items-center gap-3 w-full md:w-1/4">
-              <div className="w-14 h-14 flex items-center justify-center">
-                <img src={logo} alt="Science Saga Logo" className="w-full h-full object-contain" />
+            <div className="flex items-center justify-between w-full md:w-1/4">
+              <div className="flex items-center gap-3">
+                <div className="w-14 h-14 flex items-center justify-center shrink-0">
+                  <img src={logo} alt="Science Saga Logo" className="w-full h-full object-contain" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-lg sm:text-xl font-bold text-teal-800 leading-tight">Science Saga</span>
+                  <span className="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-wider font-medium">by Arul Educational Trust</span>
+                </div>
               </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-bold text-teal-800 leading-tight">Science Saga</span>
-                <span className="text-[10px] text-gray-500 uppercase tracking-wider font-medium">by Arul Educational Trust</span>
-              </div>
+              <button 
+                className="md:hidden p-2 text-gray-600 hover:text-teal-700"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
             </div>
             
-            {/* Nav links centered */}
+            {/* Desktop Nav links centered */}
             <div className="hidden md:flex items-center justify-center space-x-8 flex-1">
-              <a href="#" className="text-gray-600 hover:text-science-orange text-sm font-medium transition-colors">Home</a>
-              <a href="#" className="text-gray-600 hover:text-science-orange text-sm font-medium transition-colors">About</a>
-              <a href="#" className="text-gray-600 hover:text-science-orange text-sm font-medium transition-colors">Focus Areas</a>
-              <a href="#" className="text-gray-600 hover:text-science-orange text-sm font-medium transition-colors">Science Saga</a>
-              <a href="#" className="text-gray-600 hover:text-science-orange text-sm font-medium transition-colors">Impact</a>
-              <a href="#" className="text-gray-600 hover:text-science-orange text-sm font-medium transition-colors">Vision</a>
-              <a href="#" className="text-gray-600 hover:text-science-orange text-sm font-medium transition-colors">Contact</a>
+              <a href="#home" className="text-gray-600 hover:text-science-orange text-sm font-medium transition-colors">Home</a>
+              <a href="#about" className="text-gray-600 hover:text-science-orange text-sm font-medium transition-colors">About</a>
+              <a href="#focus-areas" className="text-gray-600 hover:text-science-orange text-sm font-medium transition-colors">Focus Areas</a>
+              <a href="#gallery" className="text-gray-600 hover:text-science-orange text-sm font-medium transition-colors">Gallery</a>
+              <a href="#impact" className="text-gray-600 hover:text-science-orange text-sm font-medium transition-colors">Impact</a>
+              <a href="#vision" className="text-gray-600 hover:text-science-orange text-sm font-medium transition-colors">Vision</a>
+              <a href="#contact" className="text-gray-600 hover:text-science-orange text-sm font-medium transition-colors">Contact</a>
             </div>
 
             {/* Support Us button on the far right */}
-            <div className="hidden md:flex w-1/4 justify-end">
-              <button className="bg-science-orange hover:bg-orange-600 text-gray-900 font-semibold px-6 py-2.5 rounded-lg transition-all duration-300 hover:scale-105 shadow-md">
+            <div className="hidden md:flex w-1/4 justify-end gap-3 items-center">
+              <Link to="/apply" className="text-teal-700 border border-teal-700 hover:bg-teal-50 font-semibold px-4 py-2 rounded-lg transition-all duration-300">
+                Apply
+              </Link>
+              <a href="#contact" className="bg-science-orange hover:bg-orange-600 text-gray-900 font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-md inline-block">
                 Support Us
-              </button>
+              </a>
             </div>
           </div>
         </div>
+
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-20 left-0 w-full bg-white shadow-lg border-b border-gray-100 flex flex-col py-4 px-6 space-y-4 z-40">
+            <a href="#home" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-600 hover:text-science-orange text-base font-medium">Home</a>
+            <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-600 hover:text-science-orange text-base font-medium">About</a>
+            <a href="#focus-areas" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-600 hover:text-science-orange text-base font-medium">Focus Areas</a>
+            <a href="#gallery" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-600 hover:text-science-orange text-base font-medium">Gallery</a>
+            <a href="#impact" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-600 hover:text-science-orange text-base font-medium">Impact</a>
+            <a href="#vision" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-600 hover:text-science-orange text-base font-medium">Vision</a>
+            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-600 hover:text-science-orange text-base font-medium">Contact</a>
+            <Link to="/apply" onClick={() => setIsMobileMenuOpen(false)} className="bg-teal-700 text-white text-center font-semibold px-6 py-2.5 rounded-lg mt-2">
+              Apply Now
+            </Link>
+            <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="bg-science-orange text-gray-900 text-center font-semibold px-6 py-2.5 rounded-lg mt-2">
+              Support Us
+            </a>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex flex-col items-center justify-center pt-20">
+      <section id="home" className="relative min-h-[100svh] flex flex-col items-center justify-center pt-28 pb-12">
         <img 
           src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=2832&auto=format&fit=crop" 
           alt="Hero Background" 
@@ -78,26 +130,29 @@ function App() {
         <div className="absolute inset-0 bg-black/40 bg-gradient-to-b from-black/20 to-black/60 z-0"></div>
         
         {/* Content centered */}
-        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto w-full mt-10">
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 max-w-5xl mx-auto w-full mt-8 md:mt-12 mb-8">
           <div className="inline-block px-5 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-slate-200 font-medium text-sm mb-6">
             Since 1999 — Arul Educational Trust
           </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-4 tracking-tight">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold text-white mb-4 tracking-tight leading-tight">
             Science Saga
           </h1>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 leading-snug">
             Free Robotics & AI Learning Centre
           </h2>
           <p className="max-w-3xl text-lg md:text-xl text-slate-200 mb-10 leading-relaxed">
             Empowering rural communities through education, innovation, and humanitarian service. Making every child future-ready with hands-on STEM training.
           </p>
           <div className="flex flex-col sm:flex-row gap-5 justify-center w-full sm:w-auto">
-            <button className="bg-science-orange text-gray-900 font-bold px-8 py-3.5 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg w-full sm:w-auto">
+            <Link to="/apply" className="bg-teal-600 hover:bg-teal-700 text-white font-bold px-8 py-3.5 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg w-full sm:w-auto text-center inline-block">
+              Apply Now
+            </Link>
+            <a href="#flagship" className="bg-science-orange text-gray-900 font-bold px-8 py-3.5 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg w-full sm:w-auto text-center inline-block">
               Explore Science Saga
-            </button>
-            <button className="bg-white/10 border border-white/20 backdrop-blur-md text-white font-bold px-8 py-3.5 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-white/20 w-full sm:w-auto">
+            </a>
+            <a href="#about" className="bg-white/10 border border-white/20 backdrop-blur-md text-white font-bold px-8 py-3.5 rounded-lg transition-all duration-300 hover:scale-105 hover:bg-white/20 w-full sm:w-auto text-center inline-block">
               Learn About Us
-            </button>
+            </a>
           </div>
         </div>
         
@@ -126,8 +181,46 @@ function App() {
         </div>
       </section>
 
+      {/* Message from CEO Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="flex-1 text-center md:text-left">
+              <div className="inline-block px-4 py-1.5 rounded-full bg-cyan-100 text-cyan-800 font-semibold text-xs uppercase tracking-wider mb-6">
+                Hear From Us
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">What is Science Saga about?</h2>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                Listen to our CEO explain the core vision behind Science Saga and how we are empowering the next generation of rural innovators through accessible, hands-on STEM education.
+              </p>
+              <div className="flex items-center gap-4 justify-center md:justify-start mt-8">
+                <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center">
+                  <MonitorPlay className="w-6 h-6 text-teal-700" />
+                </div>
+                <div>
+                  <div className="font-bold text-gray-900">Watch the Short</div>
+                  <div className="text-sm text-gray-500">Discover our mission in 60 seconds</div>
+                </div>
+              </div>
+            </div>
+            <div className="flex-1 w-full max-w-sm mx-auto">
+              <div className="relative w-full aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl border-4 border-gray-100">
+                <iframe 
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/bJQ6LuP0ZZo" 
+                  title="What is Science Saga?" 
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* About Us */}
-      <section className="py-24 bg-[#FAFAFA]">
+      <section id="about" className="py-24 bg-[#FAFAFA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-block px-4 py-1.5 rounded-full bg-cyan-100 text-cyan-800 font-semibold text-xs uppercase tracking-wider mb-6">
@@ -177,7 +270,7 @@ function App() {
       </section>
 
       {/* Focus Areas */}
-      <section className="py-24 bg-white">
+      <section id="focus-areas" className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-block px-4 py-1.5 rounded-full bg-orange-100 text-orange-800 font-semibold text-xs uppercase tracking-wider mb-6">
@@ -274,7 +367,7 @@ function App() {
       </section>
 
       {/* Flagship Initiative */}
-      <section className="py-24 bg-[#FAFAFA]">
+      <section id="flagship" className="py-24 bg-[#FAFAFA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <div className="inline-block px-4 py-1.5 rounded-full bg-orange-100 text-orange-800 font-semibold text-xs uppercase tracking-wider mb-6">
@@ -527,7 +620,7 @@ function App() {
       </section>
 
       {/* Expected Impact & Long-Term Vision */}
-      <section className="py-24 bg-[#FAFAFA]">
+      <section id="impact" className="py-24 bg-[#FAFAFA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-block px-4 py-1.5 rounded-full bg-cyan-100 text-cyan-800 font-semibold text-xs uppercase tracking-wider mb-6">
@@ -586,7 +679,7 @@ function App() {
       </section>
 
       {/* Vision for the Future */}
-      <section className="py-24 bg-white">
+      <section id="vision" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-block px-4 py-1.5 rounded-full bg-orange-100 text-orange-800 font-semibold text-xs uppercase tracking-wider mb-6">
@@ -632,7 +725,7 @@ function App() {
       </section>
 
       {/* Photo Gallery */}
-      <section className="py-24 bg-[#FAFAFA]">
+      <section id="gallery" className="py-24 bg-[#FAFAFA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-block px-4 py-1.5 rounded-full bg-cyan-100 text-cyan-800 font-semibold text-xs uppercase tracking-wider mb-6">
@@ -662,7 +755,7 @@ function App() {
       </section>
 
       {/* Contact Us & Support */}
-      <section className="py-24 bg-white">
+      <section id="contact" className="py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-block px-4 py-1.5 rounded-full bg-cyan-100 text-cyan-800 font-semibold text-xs uppercase tracking-wider mb-6">
@@ -710,35 +803,44 @@ function App() {
               </div>
             </div>
 
-            {/* Support Info */}
-            <div className="bg-teal-800 p-10 rounded-3xl text-white flex flex-col justify-between">
-              <div>
-                <h3 className="text-xl font-bold mb-6">Arul Educational Trust</h3>
-                <ul className="space-y-4 mb-8">
-                  <li className="flex gap-3 items-start">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#E67E22] mt-2 shrink-0"></span>
-                    <span className="text-sm text-teal-50/90 leading-relaxed">Registered Trust under Indian Trusts Act</span>
-                  </li>
-                  <li className="flex gap-3 items-start">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#E67E22] mt-2 shrink-0"></span>
-                    <span className="text-sm text-teal-50/90 leading-relaxed">CSR & 12A/80G certified for tax-deductible donations</span>
-                  </li>
-                  <li className="flex gap-3 items-start">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#E67E22] mt-2 shrink-0"></span>
-                    <span className="text-sm text-teal-50/90 leading-relaxed">Key Focus: Education, Skill Development, Women Empowerment, Rural Innovation</span>
-                  </li>
-                </ul>
-
-                <div className="bg-teal-900/40 rounded-xl p-5 mb-8 border border-teal-700/50">
-                  <div className="text-xs font-bold text-teal-200 uppercase tracking-wider mb-2">Organized By</div>
-                  <div className="font-medium mb-1">Arul Educational Trust</div>
-                  <div className="text-xs text-teal-200/80">Ulundurpet, Kallakurichi District, Tamil Nadu</div>
+            {/* Contact Form */}
+            <div className="bg-teal-800 p-10 rounded-3xl text-white flex flex-col justify-between relative overflow-hidden">
+              <h3 className="text-xl font-bold mb-6">Send us a Message</h3>
+              <form onSubmit={handleFormSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium mb-1 text-teal-50">Name</label>
+                  <input type="text" id="name" required className="w-full px-4 py-3 rounded-xl bg-teal-900/50 border border-teal-700/50 text-white placeholder-teal-300/50 focus:outline-none focus:ring-2 focus:ring-[#E67E22]" placeholder="Your name" />
                 </div>
-              </div>
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium mb-1 text-teal-50">Subject</label>
+                  <input type="text" id="subject" required className="w-full px-4 py-3 rounded-xl bg-teal-900/50 border border-teal-700/50 text-white placeholder-teal-300/50 focus:outline-none focus:ring-2 focus:ring-[#E67E22]" placeholder="How can we help?" />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium mb-1 text-teal-50">Message</label>
+                  <textarea id="message" required rows="4" className="w-full px-4 py-3 rounded-xl bg-teal-900/50 border border-teal-700/50 text-white placeholder-teal-300/50 focus:outline-none focus:ring-2 focus:ring-[#E67E22] resize-none" placeholder="Your message..."></textarea>
+                </div>
+                <button type="submit" className="w-full bg-[#E67E22] hover:bg-[#d67119] text-gray-900 font-bold py-4 rounded-xl transition-colors mt-4">
+                  Send Message
+                </button>
+              </form>
               
-              <button className="w-full bg-[#E67E22] hover:bg-[#d67119] text-gray-900 font-bold py-4 rounded-xl transition-colors">
-                Get in Touch to Support
-              </button>
+              {showSuccessPopup && (
+                <div className="absolute inset-0 bg-teal-800/95 flex flex-col items-center justify-center p-8 text-center backdrop-blur-sm z-10 transition-all duration-300">
+                  <div className="w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center mb-4 shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h4 className="text-xl font-bold mb-2">Message Prepared!</h4>
+                  <p className="text-teal-50 text-sm">Opening your email client to send the message to techassociatesgroups@gmail.com.</p>
+                  <button 
+                    onClick={() => setShowSuccessPopup(false)}
+                    className="mt-6 px-6 py-2 border border-teal-600 rounded-lg text-sm hover:bg-teal-700 transition-colors"
+                  >
+                    Close
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -787,6 +889,15 @@ function App() {
         </button>
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/apply" element={<ApplyPage />} />
+    </Routes>
   );
 }
 
