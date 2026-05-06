@@ -165,7 +165,7 @@ function LandingPage() {
                 <div className="text-xs md:text-sm text-slate-200 font-semibold uppercase tracking-widest">Years of Service</div>
               </div>
               <div className="flex flex-col items-center">
-                <div className="text-4xl md:text-5xl font-extrabold text-science-orange mb-2">500+</div>
+                <div className="text-4xl md:text-5xl font-extrabold text-science-orange mb-2">25K+</div>
                 <div className="text-xs md:text-sm text-slate-200 font-semibold uppercase tracking-widest">Students Trained</div>
               </div>
               <div className="flex flex-col items-center">
@@ -191,7 +191,7 @@ function LandingPage() {
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">What is Science Saga about?</h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Listen to our CEO explain the core vision behind Science Saga and how we are empowering the next generation of rural innovators through accessible, hands-on STEM education.
+                Listen to our core vision behind Science Saga and how we are empowering the next generation of rural innovators through accessible, hands-on STEM education.
               </p>
               <div className="flex items-center gap-4 justify-center md:justify-start mt-8">
                 <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center">
@@ -382,11 +382,11 @@ function LandingPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
-              <div className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">500+</div>
+              <div className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">25k+</div>
               <div className="text-sm text-gray-500 font-medium">Students Trained</div>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
-              <div className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">250+</div>
+              <div className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">10k+</div>
               <div className="text-sm text-gray-500 font-medium">Rural Youth Skilled</div>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
